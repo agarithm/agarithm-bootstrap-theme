@@ -1,0 +1,38 @@
+#!/bin/bash
+here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $here
+
+function do_install {
+	#https://getbootstrap.com/docs/4.1/getting-started/build-tools/
+	if [ ! -d node_modules ]; then
+		cd $here
+		curl -sL https://deb.nodesource.com/setup_10.x | bash -
+		apt-get update
+		apt-get install -y nodejs zlib1g-dev
+		apt-get autoremove
+		apt-get install -y ruby-full
+		if [ ! -f /usr/bin/node ]; then 
+			ln -s /usr/bin/nodejs /usr/bin/node
+		fi
+		npm install --unsafe-perm
+		gem install bundler
+		bundler install
+
+		# setup sampler path:
+		cd ..
+		find . -type d -name webroot | xargs -I {} ln -s $here {}/sampler
+		chown -R www-data .
+	fi
+}
+
+do_install
+cd $here
+npm run dist
+
+if [ $? = 0 ];then
+	echo ""
+	echo =====================================
+	echo Install the new theme by running
+	echo   	$here/tryit
+	echo =====================================
+fi

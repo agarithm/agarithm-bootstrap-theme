@@ -1,0 +1,66 @@
+//Override with our theme values
+
+$black:      #001133; //Deep Blue
+$primary:    #1010c0; //Blue
+$secondary:  #4040f0; //Cyan
+
+$white:    #fff;
+$sat: 85;
+$gray-100: desaturate(lighten($black, 90), $sat);
+$gray-200: desaturate(lighten($black, 80), $sat);
+$gray-300: desaturate(lighten($black, 70), $sat);
+$gray-400: desaturate(lighten($black, 60), $sat);
+$gray-500: desaturate(lighten($black, 50), $sat);
+$gray-600: desaturate(lighten($black, 40), $sat);
+$gray-700: desaturate(lighten($black, 30), $sat);
+$gray-800: desaturate(lighten($black, 20), $sat);
+$gray-900: desaturate(lighten($black, 10), $sat);
+
+$blue:    hsl(hue(#007bff), saturation($secondary), lightness($gray-500));
+$indigo:  hsl(hue(#6610f2), saturation($secondary), lightness($gray-500));
+$purple:  hsl(hue(#6f42c1), saturation($secondary), lightness($gray-500));
+$pink:    hsl(hue(#e83e8c), saturation($secondary), lightness($gray-500));
+$red:     hsl(hue(#dc3545), saturation($secondary), lightness($gray-500));
+$orange:  hsl(hue(#fd7e14), saturation($secondary), lightness($gray-500));
+$yellow:  hsl(hue(#ffc107), 90, lightness($gray-500));
+$green:   hsl(hue(#28a745), saturation($secondary), lightness($gray-500));
+$teal:    hsl(hue(#20c997), saturation($secondary), lightness($gray-500));
+$cyan:    hsl(hue($secondary), saturation($secondary), lightness($gray-300));
+$light:   $gray-200;
+
+$border-width: 	              .1rem;
+$border-radius:               .618em;
+$border-radius-lg:            .618em;
+$border-radius-sm:            .618em;
+
+$alert-border-radius:         .618em;
+
+$custom-switch-width: 2.5rem;
+$custom-switch-height: 1.5rem;
+
+$enable-responsive-font-sizes: true;
+$enable-shadows: true;
+//$enable-gradients: true;
+
+$close-color: inherit;
+
+.table {
+  tbody tr {
+    font-size: .9em;
+  }
+}
+
+//Default layout is min 75% arena, 25% footer 
+.min-vh-25 { min-height: 25vh !important; }
+.min-vh-75 { min-height: 75vh !important; }
+
+
+//Disable HTML5 Number field up/dn arrows
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

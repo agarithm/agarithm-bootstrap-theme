@@ -1,0 +1,29 @@
+#!/bin/bash
+if [ "$#" -ne 1 ]; then
+    echo " USAGE: $0 path/to/webroot"
+    exit -1
+fi
+there=`realpath $1`
+here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $here
+if [ -d $there ];then
+	if [ ! -d $there/css ];then
+		cp -rf  $here/dist/css $there/css
+	else
+		cp -ru  $here/dist/css/* $there/css
+	fi
+	if [ ! -d $there/js ];then
+		cp -rf  $here/dist/js $there/js
+	else
+		cp -ru  $here/dist/js/* $there/js
+	fi
+
+	#Install the Theme Sampler
+	if [ ! -L $there/sampler ];then
+		ln -s $here $there/sampler
+	fi
+
+	chown -R www-data $there
+else
+	echo ERROR: Sampler webroot not found at $there
+fi
