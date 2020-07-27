@@ -1,10 +1,10 @@
 //Override with our theme values
 
-$black:      #001133; //Deep Blue
-$primary:    #1010c0; //Blue
-$secondary:  #4040f0; //Cyan
+$primary:    #544E4A; //Brown
+$secondary:  #A18776; //Tan
+$black:      darken($primary,90);
 
-$white:    #fff;
+$white:    lighten($primary,95);
 $sat: 85;
 $gray-100: desaturate(lighten($black, 90), $sat);
 $gray-200: desaturate(lighten($black, 80), $sat);
